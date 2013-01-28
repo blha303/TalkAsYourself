@@ -1,0 +1,10 @@
+name: TalkAsYourself
+main: me.blha303.TalkAsYourself
+version: 1.0
+commands:
+  talk:
+    description: "For talking as yourself"
+    aliases: [t, .]
+  talkas:
+    description: "For talking as someone else"
+    aliases: [ta]
