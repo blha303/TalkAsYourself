@@ -44,12 +44,11 @@ public class TalkAsYourself extends JavaPlugin implements Listener {
 			for (int i = 0; i < args.length; i++) {
 				msg += args[i] + " ";
 			}
-			getServer().broadcastMessage(
-					ChatColor.translateAlternateColorCodes(
-							'&',
-							getConfig().getString("string").replace("%name%",
-									getConfig().getString("name"))
-									+ " " + msg));
+			String mesg = ChatColor.translateAlternateColorCodes('&',
+					getConfig().getString("string").replace("%name%",
+							getConfig().getString("name"))
+							+ " " + msg);
+			getServer().broadcastMessage(mesg);
 			return true;
 		}
 
@@ -58,13 +57,14 @@ public class TalkAsYourself extends JavaPlugin implements Listener {
 				msg += args[i] + " ";
 			}
 			String talkas = args[0];
-			getServer().broadcastMessage(
-					ChatColor.translateAlternateColorCodes('&', getConfig()
-							.getString("string").replace("%name%", talkas)
-							+ " " + msg));
+			String mesg = ChatColor.translateAlternateColorCodes('&', getConfig()
+					.getString("string").replace("%name%", talkas)
+					+ " " + msg);
+			getServer().broadcastMessage(mesg);
 			return true;
 		}
 		return false;
 
 	}
+
 }
