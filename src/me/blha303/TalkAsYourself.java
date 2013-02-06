@@ -11,7 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class TalkAsYourself extends JavaPlugin implements Listener {
 
-	public Logger log = Logger.getLogger("Minecraft");
+	public Logger log;
 
 	public void info(String str) {
 		log.info("[TalkToYourself] " + str);
@@ -22,7 +22,8 @@ public class TalkAsYourself extends JavaPlugin implements Listener {
 		getConfig().addDefault("name", "&4Console");
 		getConfig().options().copyDefaults(true);
 		saveConfig();
-		info("Enabled");
+		log = this.getLogger();
+		log.info("Enabled");
 	}
 
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -31,6 +32,7 @@ public class TalkAsYourself extends JavaPlugin implements Listener {
 		if (sender instanceof Player) {
 			sender.sendMessage(ChatColor.RED + "You can't use this command! ");
 			sender.sendMessage(ChatColor.GRAY + "(If you wanted /tell, try /m instead)");
+			log.info(sender.getDisplayName() + " was denied access.");
 			return true;
 		}
 
