@@ -25,29 +25,23 @@ public class TalkAsYourself extends JavaPlugin implements Listener {
 		info("Enabled");
 	}
 
-	public boolean onCommand(CommandSender sender, Command command,
-			String label, String[] args) {
+	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		String msg = "";
 
 		if (sender instanceof Player) {
 			sender.sendMessage(ChatColor.RED + "You can't use this command! ");
-			sender.sendMessage(ChatColor.GRAY
-					+ "(If you wanted /tell, try /m instead)");
+			sender.sendMessage(ChatColor.GRAY + "(If you wanted /tell, try /m instead)");
 			return true;
 		}
 
-		if (args.length == 0) {
-			return false;
-		}
+		if (args.length == 0) return false;
 
 		if (command.getName().equalsIgnoreCase("talk")) {
 			for (int i = 0; i < args.length; i++) {
 				msg += args[i] + " ";
 			}
-			String mesg = ChatColor.translateAlternateColorCodes('&',
-					getConfig().getString("string").replace("%name%",
-							getConfig().getString("name"))
-							+ " " + msg);
+			String mesg = ChatColor.translateAlternateColorCodes('&', getConfig().getString("string")
+			    .replace("%name%",getConfig().getString("name")) + " " + msg);
 			getServer().broadcastMessage(mesg);
 			return true;
 		}
@@ -57,9 +51,8 @@ public class TalkAsYourself extends JavaPlugin implements Listener {
 				msg += args[i] + " ";
 			}
 			String talkas = args[0];
-			String mesg = ChatColor.translateAlternateColorCodes('&', getConfig()
-					.getString("string").replace("%name%", talkas)
-					+ " " + msg);
+			String mesg = ChatColor.translateAlternateColorCodes('&', getConfig().getString("string")
+			    .replace("%name%", talkas) + " " + msg);
 			getServer().broadcastMessage(mesg);
 			return true;
 		}
