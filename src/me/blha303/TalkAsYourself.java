@@ -30,9 +30,10 @@ public class TalkAsYourself extends JavaPlugin implements Listener {
 		String msg = "";
 
 		if (sender instanceof Player) {
-			sender.sendMessage(ChatColor.RED + "You can't use this command! ");
-			sender.sendMessage(ChatColor.GRAY + "(If you wanted /tell, try /m instead)");
-			log.info(sender.getDisplayName() + " was denied access.");
+			Player player = (Player)sender;
+			player.sendMessage(ChatColor.RED + "You can't use this command! ");
+			player.sendMessage(ChatColor.GRAY + "(If you wanted /tell, try /m instead)");
+			log.info(player.getDisplayName() + " was denied access.");
 			return true;
 		}
 
